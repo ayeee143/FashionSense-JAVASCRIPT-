@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion & Design Customization</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(Pictures/ayeefashion.jpg);
+            background-size: cover;
+        }
+
+        .content-container {
+            font-family: 'Playfair Display', serif;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            max-width: 800px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #9b9b9b;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #555;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .image {
+            max-width: 100%;
+            border-radius: 5px;
+            margin: 0 10px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="container">
+            <h1>Discover Your Style</h1>
+            <p>Explore the essence of fashion and design with customizable options.</p>
+            <div class="image-container">
+                <img class="image" src="Pictures/formals.png" alt="Fashion Image 1">
+                <img class="image" src="Pictures/sundress.jpeg" alt="Fashion Image 2">
+                <img class="image" src="Pictures/streetwear.jpg" alt="Fashion Image 3">
+            </div>
+            <button class="btn" id="toggleModeBtn">Toggle Mode</button>
+            <button class="btn" id="increaseFontSizeBtn">Increase Font Size</button>
+            <button class="btn" id="decreaseFontSizeBtn">Decrease Font Size</button>
+        </div>
+    </div>
+
+    <script>
+        const contentContainer = document.querySelector('.content-container');
+        const toggleModeBtn = document.getElementById('toggleModeBtn');
+        const increaseFontSizeBtn = document.getElementById('increaseFontSizeBtn');
+        const decreaseFontSizeBtn = document.getElementById('decreaseFontSizeBtn');
+        const textElements = document.querySelectorAll('.container *');
+
+        let isDarkMode = false;
+        let fontSize = 16;
+
+        toggleModeBtn.addEventListener('click', toggleMode);
+        increaseFontSizeBtn.addEventListener('click', increaseFontSize);
+        decreaseFontSizeBtn.addEventListener('click', decreaseFontSize);
+
+        function toggleMode() {
+            isDarkMode = !isDarkMode;
+            contentContainer.style.backgroundColor = isDarkMode ? 'rgba(0, 0, 0, 0.9)' : 'rgba(255, 255, 255, 0.9)';
+            textElements.forEach(element => {
+                element.style.color = isDarkMode ? '#fff' : '#333';
+            });
+        }
+
+        function increaseFontSize() {
+            fontSize += 2;
+            contentContainer.style.fontSize = fontSize + 'px';
+        }
+
+        function decreaseFontSize() {
+            fontSize -= 2;
+            if (fontSize < 10) {
+                fontSize = 10; // Setting a minimum font size
+            }
+            contentContainer.style.fontSize = fontSize + 'px';
+        }
+    </script>
+</body>
+</html>
